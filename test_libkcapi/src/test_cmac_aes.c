@@ -72,8 +72,7 @@ static void bin2print(const u_int8_t *bin, u_int32_t binlen)
 #define OUTPUT_LEN  32
 #define OUTPUTBIN_LEN 	(OUTPUT_LEN/2)
 
-
-int main()
+void test_cmac_aes128()
 {
 	u_int8_t key_bin[KEYBIN_LEN];
 	u_int8_t input_bin[INPUTBIN_LEN];
@@ -91,6 +90,36 @@ int main()
 	bin2print(input_bin, INPUTBIN_LEN);
 	printf("output: \n");
 	bin2print(output_bin, rc);
+}
+
+#define RNG_OUT_LEN 	128
+#define BITS_PER_BYTE 	8
+
+void test_rng_128()
+{
+	uint8_t out[RNG_OUT_LEN/BITS_PER_BYTE];
+	int32_t ret;
+
+	memset(out, 0, sizeof(out));
+	printf("BYTES: %d\n", sizeof(out));
+
+	ret = kcapi_rng_get_bytes(out, sizeof(out));
+	if (ret != sizeof(out)) {
+		printf("Random number generation error");
+		return;
+	}
+
+	bin2print(out, sizeof(out));
+	printf("Random number generation success!\n");
+
+	return;
+}
+
+int main()
+{
+//	test_cmac_aes128();
+
+	test_rng_128();
 
 	return 0;
 }

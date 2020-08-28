@@ -2,7 +2,7 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 3.5)
 PROJECT (test_libkcapi)
 
-SET(TARGET_TYPE xx)
+SET(TARGET_TYPE arm)
 
 IF(${TARGET_TYPE} STREQUAL "arm")
         MESSAGE(STATUS "========== The target is for arm, so let's cross-compile ==========")
