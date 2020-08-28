@@ -1,0 +1,17 @@
+###  AUTHOR: wangshijie  ###
+
+# 1. include path
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/inc)
+
+# 2. source code path
+AUX_SOURCE_DIRECTORY(. DIR_SRCS)
+
+# 3. lib path
+LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib)
+
+# 4. set output path
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+
+
+ADD_EXECUTABLE(demo ${DIR_SRCS})
+TARGET_LINK_LIBRARIES(demo kcapi)
